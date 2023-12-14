@@ -41,7 +41,10 @@ while ($rows = mysqli_fetch_array($ress)) {
         'address' => $rows['address']
     ];
 }
-
+$url = "https://api.openweathermap.org/data/2.5/weather?q=Valletta&appid=b72cc5f21d93d8317baf904470f0a6ff&units=metric";
+$response = file_get_contents($url);
+$weatherData = json_decode($response, true);
+$temp = $weatherData['main']['temp'];
 
 
 echo $twig->render('index.twig', [
@@ -49,7 +52,7 @@ echo $twig->render('index.twig', [
     'categories' => $categories,
     'restaurants' => $restaurants,
     'dishes' => $dishes,
-
+    'temperature' => $temp
 ]);
 
 ?>
