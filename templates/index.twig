@@ -83,8 +83,17 @@
             <div class="container">
                 <div class="text-xs-center">
                 <h2>
-                    Welcome to Our Website
+                    <p id="currentTemperature">Current Temperature: {{ temperature }} </p>
                 </h2>
+                    <h2>
+                        {% if temperature > 25 %}
+                            <div id="weatherMessage">The Weather is hot today, it's a great day to order food.</div>
+                        {% elseif temperature > 15 %}
+                            <div id="weatherMessage">The weather is great today, not a better time to order.</div>
+                        {% else %}
+                            <div id="weatherMessage">The weather is cold today, it's a good day to order food in the comfort of your home.</div>
+                        {% endif %}
+                    </h2>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 text-center">
