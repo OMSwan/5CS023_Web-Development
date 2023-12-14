@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="#">
+    <title>Home</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animsition.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+{% include 'header.html.twig' %}
+
+<div class="breadcrumb">
+    <div class="container">
+        
+    </div>
+</div>
+
+<div class="container m-t-30">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+            <div class="widget widget-cart">
+                <!-- Cart Widget -->
+                <div class="widget-heading">
+                    <h3 class="widget-title text-dark">Your Cart</h3>
+                    <div class="clearfix"></div>
+                </div>
+                        <div class="order-row bg-white">
+                            <div class="widget-body">
+                                {% for item in cart_items %}
+                                    <div class="title-row">
+                                        {{ item.title }}
+                                        <a href="cart.php?res_id={{ res_id }}&action=remove&id={{ item.d_id }}">
+                                            <i class="fa fa-trash pull-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="form-group row no-gutter">
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control b-r-0" value="{{ '$' ~ item.price }}" readonly>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <input class="form-control" type="text" readonly value="{{ item.quantity }}">
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="price-wrap text-xs-center">
+                                <p>TOTAL</p>
+                                <h3 class="value"><strong>{{ '$' ~ item_total }}</strong></h3>
+                                <p>Free Delivery!</p>
+                                {% if item_total > 0 %}
+                                    <a href="checkout.php?res_id={{ res_id }}&action=check" class="btn btn-success btn-lg active">Checkout</a>
+                                {% else %}
+                                    <a href="checkout.php?res_id={{ res_id }}&action=check" class="btn btn-danger btn-lg disabled">Checkout</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html.twig' %}
+
+</body>
+</html>

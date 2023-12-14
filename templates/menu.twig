@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Filter</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animsition.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/filter.css" rel="stylesheet">
+
+</head>
+<body>
+
+{% include 'header.html.twig' %}
+
+<div class="container mt-5" style="margin-left: -15px;">
+    <div class="row">
+        <div class="filter-section">
+            <select id="filler" class="form-control"></select>
+            <div class="col-md-3 order-md-2">
+            <div class="filter-section sticky-top" style="top: 20px;">
+            <select id="restaurantFilter" class="form-control">
+                <option value="">Select Cuisine</option>
+                <option value="1">Continental</option>
+                <option value="2">Italian</option>
+                <option value="3">Chinese</option>
+                <option value="4">American</option>
+            </select>
+
+            
+            <select id="foodTypeFilter" class="form-control">
+                <option value="">Select Food Type</option>
+                <option value="vegan">Vegan</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="pescatarian">Pescatarian</option>
+                <option value="none">None</option>
+            </select>
+            
+
+            <select id="spicinessFilter" class="form-control">
+                <option value="">Select Spiciness</option>
+                <option value="not_spicy">Not Spicy</option>
+                <option value="spicy">Spicy</option>
+                <option value="very_spicy">Very Spicy</option>
+            </select>
+                <input type="text" id="searchBar" class="form-control" placeholder="Search foods...">
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="foodList"></div>
+
+</div>
+</div>
+{% include 'footer.html.twig' %}
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/filter.js"></script>
+</body>
+</html>

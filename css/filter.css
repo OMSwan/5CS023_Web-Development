@@ -1,0 +1,173 @@
+/* General Container */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* Filter Section */
+.filter-section {
+    
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+.filter-section select, .filter-section input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Food List */
+#foodList {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px; /* for gutter */
+    
+}
+
+.food-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    flex: 0 0 calc(33.333% - 20px); /* three items per row, 10px margin on each side */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Food Item Styling */
+.food-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.food-item .rest-descr {
+    padding: 15px;
+}
+
+.food-item .rest-descr h6 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.food-item .rest-descr p {
+    color: #666;
+}
+
+/* Cart Info */
+.item-cart-info {
+    border-top: 1px solid #eee;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.item-cart-info .price {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.item-cart-info input[type="text"] {
+    width: 50px;
+    margin: 0 5px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.item-cart-info .btn {
+    padding: 5px 15px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+}
+
+.item-cart-info .btn:hover {
+    background-color: #0056b3;
+}
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; 
+}
+
+/* General card styles */
+.card {
+    display: flex;
+    flex-direction: column; /* Stack the content vertically */
+    margin-bottom: 20px; /* Add some space below each card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the area without stretching */
+}
+
+/* Card Body styles for consistent height */
+.card-body {
+    flex: 1; /* This will make the card-body fill the available space */
+}
+
+/* Card Footer Styles */
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+    padding: 0.75rem 1.25rem;
+}
+
+.card-footer .price {
+    margin-left: auto; 
+    padding-right: 1rem;
+    font-weight: bold;
+    color: #28a745; 
+}
+
+.card-footer .btn {
+    padding: 0.375rem 0.75rem; /* Bootstrap's default button padding */
+    background-color: #5c4ac7;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.card-footer .btn:hover {
+    background-color: #009c7a;
+}
+
+/* Clearfix for the float */
+.card-footer::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.card-footer > * {
+    margin-bottom: 0; 
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .food-item {
+        flex: 0 0 calc(50% - 20px); /* two items per row on medium devices */
+    }
+}
+
+@media (max-width: 576px) {
+    .food-item {
+        flex: 0 0 calc(100% - 20px); /* one item per row on small devices */
+    }
+}

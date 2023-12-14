@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+include("connection/connect.php");
+error_reporting(0);
+session_start();
+
+if(empty($_SESSION['user_id']))  
+{
+	header('location:login.php');
+}
+else
+{
+?>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="#">
+    <title>My Orders</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/animsition.min.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	</head>
+
+<body>
+    
+      
+                {% include 'header.html.twig' %}
+
+        <div class="page-wrapper">
+       
+           
+    
+            <div class="inner-page-hero bg-image" data-image-src="images/img/pimg.jpg">
+                <div class="container"> </div>
+        
+            </div>
+            <div class="result-show">
+                <div class="container">
+                    <div class="row">
+                       
+                       
+                    </div>
+                </div>
+            </div>
+    
+            <section class="restaurants-page">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                          </div>
+                        <div class="col-xs-12">
+                            <div class="bg-gray">
+                                <div class="row">
+								
+							<table class="table table-bordered table-hover">
+						  <thead style = "background: #404040; color:white;">
+							<tr>
+							
+							  <th>Item</th>
+							  <th>Quantity</th>
+							  <th>Price</th>
+							   <th>Status</th>
+							     <th>Date</th>
+								   <th>Action</th>
+							  
+							</tr>
+						  </thead>
+						  <tbody>
+						  
+						  
+							{% if orders is empty %}
+                                <tr>    
+                                    <td colspan="6"><center>You have no orders placed yet.</center></td>
+                                </tr>
+                            {% else %}
+                                {% for order in orders %}
+                                    <tr>
+                                        <td data-column="Item"> {{ order.title }} </td>
+                                        <td data-column="Quantity"> {{ order.quantity }} </td>
+                                        <td data-column="Price">${{ order.price }}</td>
+                                        <td data-column="Status">
+                                            {% if order.status == "" or order.status == "NULL" %}
+                                                <button type="button" class="btn btn-info"><span class="fa fa-bars" aria-hidden="true"></span> Dispatch</button>
+                                            {% elseif order.status == "in process" %}
+                                                <button type="button" class="btn btn-warning"><span class="fa fa-cog fa-spin" aria-hidden="true"></span> On The Way!</button>
+                                            {% elseif order.status == "closed" %}
+                                                <button type="button" class="btn btn-success"><span class="fa fa-check-circle" aria-hidden="true"></span> Delivered</button>
+                                            {% elseif order.status == "rejected" %}
+                                                <button type="button" class="btn btn-danger"><i class="fa fa-close"></i> Cancelled</button>
+                                            {% endif %}
+                                        </td>
+                                        <td data-column="Date"> {{ order.date }} </td>
+                                        <td data-column="Action">
+                                            <a href="delete_orders.php?order_del={{ order.o_id }}" onclick="return confirm('Are you sure you want to cancel your order?');" class="btn btn-danger btn-flat btn-addon btn-xs m-b-10"><i class="fa fa-trash-o" style="font-size:16px"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+			
+							
+							
+										
+						
+						  </tbody>
+					</table>
+						
+					
+                                    
+                                </div>
+                           
+                            </div>
+                         
+                            
+                                
+                            </div>
+                          
+                          
+                           
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+                                    {% include 'footer.html.twig' %}
+
+        
+        </div>
+  
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/animsition.min.js"></script>
+    <script src="js/bootstrap-slider.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/headroom.js"></script>
+    <script src="js/foodpicky.min.js"></script>
+</body>
+
+</html>
+<?php
+}
+?>
